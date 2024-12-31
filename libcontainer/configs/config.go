@@ -393,7 +393,7 @@ func (c Command) Run(s *specs.State) error {
 	go func() {
 		err := cmd.Wait()
 		if err != nil {
-			err = fmt.Errorf("error running hook: %w, stdout: %s, stderr: %s", err, stdout.String(), stderr.String())
+			err = fmt.Errorf("%s failed: %w, stdout: %s, stderr: %s", cmd.String(), err, stdout.String(), stderr.String())
 		}
 		errC <- err
 	}()
